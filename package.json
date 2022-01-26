@@ -2,7 +2,7 @@
   "version": "1.6.0",
   "name": "@arcaelas/cli",
   "main": "./arcaelas/index.js",
-  "description": "Arcaela CLI for management your arcaelas's projects.",
+  "description": "Client for handling and managing projects built with Arcaelas Insiders.",
   "bin": {
     "arcaelas": "./arcaelas/index.js"
   },
@@ -13,8 +13,7 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/arcaelas/arcaelas.git",
-    "directory": "cli"
+    "url": "git+ssh://github.com/Arcaelas-Insiders-ES/cli.git"
   },
   "author": "arcaelas.reyes@gmail.com",
   "license": "MIT",
