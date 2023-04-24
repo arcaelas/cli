@@ -19,8 +19,8 @@ new Command({
     async action(options, argv) {
         if (!scripts.includes(options.name)) {
             console.log("Arcaelas CLI".underline.green)
-            console.log("   arcaela [command] [arguments?] --help?")
             console.log("\"%s\" is not a valid command", options.name.red.bold)
+            console.log("arcaela [command] [arguments?] --help?")
             console.log("commands:")
             console.log("        %s", scripts.join(" "))
             process.exit()
@@ -28,7 +28,7 @@ new Command({
         const _module = await import(
             path.resolve(__dirname, 'scripts', options.name)
         )
-        return (_module.default ?? _module).exec(options.arguments, argv)
+        return (_module.default ?? _module).exec(...options.arguments)
     },
 }).exec({
     name: script,

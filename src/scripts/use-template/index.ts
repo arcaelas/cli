@@ -6,7 +6,7 @@ import readline from "node:readline/promises"
 async function prompt(question: string) {
     const rl = readline.createInterface({
         input: process.stdin,
-        output: process.stdout,
+        // output: process.stdout,
     })
     console.log(question.trim().replace(/\:$/g, "") + ':')
     return rl.question("> ")
@@ -40,14 +40,18 @@ function copy(source: string, target: string) {
 
 export default new Command({
     arguments: {
-        name: String,
-        type: String as unknown as 'module' | 'project',
+        name: {
+            value: "",
+            type: String,
+        },
+        type: {
+            value: "" as unknown as 'module' | 'project',
+            type: String,
+        },
     },
     async action(options) {
-        options.name ||= await prompt("Where you want to create?") as string
         options.type ||= await prompt("What do you want? \"project\" or \"module\"") as "module" | "project"
-
-
+        options.name ||= await prompt("Where you want to create?") as string
         if (!options.name) throw new Error("Name could not be empty")
         if (options.type !== 'project' && options.type !== 'module')
             throw new Error(`Type must be \"module\" or \"project\", received: ${options.type}`)
