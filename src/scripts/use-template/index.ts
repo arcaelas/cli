@@ -47,9 +47,11 @@ export default new Command({
         options.name ||= await prompt("Where you want to create?") as string
         options.type ||= await prompt("What do you want? \"project\" or \"module\"") as "module" | "project"
 
+
         if (!options.name) throw new Error("Name could not be empty")
         if (options.type !== 'project' && options.type !== 'module')
-            throw new Error("Type must be \"module\" or \"project\"")
+            throw new Error(`Type must be \"module\" or \"project\", received: ${options.type}`)
+
         const target = path.join(process.cwd(), options.name)
         const source = path.join(__dirname, 'templates', options.type)
         if (fs.existsSync(target))
