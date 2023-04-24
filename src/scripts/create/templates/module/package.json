@@ -1,16 +1,25 @@
 {
   "license": "ISC",
-  "type": "module",
-  "version": "2.10.0",
-  "name": "@arcaelas/module",
+  "version": "1.0.0",
+  "name": "package-name",
   "main": "lib/index.js",
-  "description": "This library is used to create modules from scratch with linter and configs files for default.\n It provides a starting point for developers who want to create their own modules, and it includes a set of tools and libraries that are commonly used in software development.\n The library is easy to use, and it can help developers to save time and effort when creating new modules.",
+  "description": "The library is easy to use, and it can help developers to save time and effort when creating new modules.",
   "scripts": {
-    "test": "jest",
     "start": "tsc --watch",
-    "commit": "npm version minor && npm publish --access=public",
-    "Void prepublishOnly": "npm run test && tsc && npm version minor",
+    "build": "tsc",
+    "test": "jest",
+    "commit": "npm publish --access=public",
+    "prepublishOnly": "npm run test && npm run build && npm version minor",
     "postpublish": "rm -rf lib"
+  },
+  "author": {
+    "name": "Arcaelas Insiders",
+    "email": "comunity@arcaelas.com",
+    "url": "https://github.com/arcaelas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arcaelas/cli.git"
   },
   "keywords": [
     "arcaelas",
@@ -26,11 +35,6 @@
     "save time",
     "effort"
   ],
-  "author": {
-    "name": "Arcaelas Insiders",
-    "email": "comunity@arcaelas.com",
-    "url": "https://github.com/arcaelas"
-  },
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@types/node": "^18.15.13",
