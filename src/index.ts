@@ -28,6 +28,7 @@ new Command({
         const _module = await import(
             path.resolve(__dirname, 'scripts', options.name)
         )
+        console.log("Type of Module: ", typeof _module)
         return (_module.default ?? _module)(options.arguments, argv)
     },
 }).exec({
