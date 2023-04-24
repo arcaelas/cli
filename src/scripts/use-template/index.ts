@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import shell from "shelljs";
 import path from "node:path";
 import Command from "@arcaelas/command";
 import readline from "node:readline/promises"
@@ -60,6 +61,10 @@ export default new Command({
         const source = path.join(__dirname, 'templates', options.type)
         if (fs.existsSync(target))
             fs.rmSync(target, { recursive: true })
-        copy(source, target,)
+        copy(source, target)
+
+        shell.cd(target)
+        shell.exec('npx yarn --force')
+        process.exit()
     },
 })
