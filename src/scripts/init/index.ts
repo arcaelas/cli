@@ -32,25 +32,18 @@ function copy(source: string, target: string) {
 }
 
 export default new Command({
-    arguments: {
-        name: {
-            value: "",
-            type: String,
-        },
-        type: {
-            value: "" as unknown as 'module' | 'project',
-            type: String,
-        },
-    },
-    async action(options) {
+    arguments: {},
+    async action() {
+        const templates = fs.readdirSync(
+            path.join(__dirname, 'templates')
+        )
         const answers = await inquirer.prompt([
             {
                 name: "type",
                 type: "list",
                 message: `What do you want to create?`,
-                choices: ['module', 'project'],
+                choices: templates,
                 validate: input => input.trim() ? true : "Name could not be empty",
-                when: () => typeof options.type !== 'string' || !options.type.length,
             },
             {
                 name: "name",
@@ -58,7 +51,6 @@ export default new Command({
                 default: path.basename(process.cwd()),
                 message: a => `What do you want to name yor ${a.type}?`,
                 validate: input => input.trim() ? true : "Name could not be empty",
-                when: () => typeof options.name !== 'string' || !options.name.length,
             },
             {
                 name: "install",
