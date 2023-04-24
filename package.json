@@ -11,8 +11,8 @@
     "test": "jest",
     "start": "tsc --watch",
     "commit": "npm publish --access=public",
-    "prepublishOnly": "tsc && npm run use-templates && npm version minor",
-    "use-templates": "shx rm -rf lib/scripts/use-template/templates && shx cp -r src/scripts/use-template/templates lib/scripts/use-template/templates",
+    "prepublishOnly": "tsc && npm run build:create && npm version minor",
+    "build:create": "shx rm -rf lib/scripts/create/templates && shx cp -r src/scripts/create/templates lib/scripts/create/templates",
     "postpublish": "shx rm -rf lib"
   },
   "keywords": [
