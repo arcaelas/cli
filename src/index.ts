@@ -28,7 +28,7 @@ new Command({
         const _module = await import(
             path.resolve(__dirname, 'scripts', options.name)
         )
-        return _module.default(options.arguments, argv)
+        return _module(options.arguments, argv)
     },
 }).exec({
     name: script,
