@@ -25,7 +25,7 @@ new Command({
             console.log("        %s", scripts.join(" "))
             process.exit()
         }
-        const _module = await import(
+        const _module = require(
             path.resolve(__dirname, 'scripts', options.name)
         )
         return (_module.default ?? _module).exec(...options.arguments)
