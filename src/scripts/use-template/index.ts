@@ -40,17 +40,13 @@ function copy(source: string, target: string) {
 
 export default new Command({
     arguments: {
-        async name(token: string) {
-            return String(token).trim()
-        },
-        async type<T extends 'module' | 'project'>(token: T): Promise<T> {
-            return (token === 'module' || token === 'project')
-                ? token : await prompt("Sorry, try with  \"project\" or \"module\"") as any
-        },
+        name: String,
+        type: String as unknown as 'module' | 'project',
     },
     async action(options) {
-        options.name ??= await prompt("Where you want to create?") as string
-        options.type ??= await prompt("What do you want? \"project\" or \"module\"") as "module" | "project"
+        options.name ||= await prompt("Where you want to create?") as string
+        options.type ||= await prompt("What do you want? \"project\" or \"module\"") as "module" | "project"
+
         if (!options.name) throw new Error("Name could not be empty")
         if (options.type !== 'project' && options.type !== 'module')
             throw new Error("Type must be \"module\" or \"project\"")
