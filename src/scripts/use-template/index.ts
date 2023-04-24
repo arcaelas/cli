@@ -59,12 +59,13 @@ export default new Command({
 
         const target = path.join(process.cwd(), options.name)
         const source = path.join(__dirname, 'templates', options.type)
-        if (fs.existsSync(target))
-            fs.rmSync(target, { recursive: true })
-        copy(source, target)
+        console.log('source: %s target: %', source, target)
+        // if (fs.existsSync(target))
+        //     fs.rmSync(target, { recursive: true })
+        // copy(source, target)
 
-        shell.cd(target)
-        shell.exec('npx yarn --force')
-        process.exit()
+        // shell.cd(target)
+        // shell.exec('npx yarn --force')
+        // process.exit()
     },
 })
