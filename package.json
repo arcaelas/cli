@@ -1,6 +1,6 @@
 {
   "license": "ISC",
-  "version": "2.32.0",
+  "version": "2.33.0",
   "name": "@arcaelas/cli",
   "main": "lib/index.js",
   "bin": {
