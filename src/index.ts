@@ -13,24 +13,22 @@ const [script, ...args] = process.argv.slice(
 
 new Command({
     arguments: {
-        name(token: string) {
-            if (!scripts.includes(token)) {
-                console.log("Arcaelas CLI".underline.green)
-                console.log("   arcaela [command] [arguments?] --help?")
-                console.log("%s is not a valid command", script.red.bold)
-                console.log("commands:")
-                console.log("        %s", scripts.join(" "))
-                process.exit()
-            }
-            return token
-        },
+        name: String,
         arguments: Array,
     },
     async action(options, argv) {
-        const module = await import(
+        if (!scripts.includes(options.name)) {
+            console.log("Arcaelas CLI".underline.green)
+            console.log("   arcaela [command] [arguments?] --help?")
+            console.log("\"%s\" is not a valid command", options.name.red.bold)
+            console.log("commands:")
+            console.log("        %s", scripts.join(" "))
+            process.exit()
+        }
+        const _module = await import(
             path.resolve(__dirname, 'scripts', options.name)
         )
-        return module.default(options.arguments, argv)
+        return _module.default(options.arguments, argv)
     },
 }).exec({
     name: script,
