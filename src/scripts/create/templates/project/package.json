@@ -21,6 +21,10 @@
     "type": "git",
     "url": "https://github.com/arcaelas/cli.git"
   },
+  "bugs": {
+    "email": "community@arcaelas.com",
+    "url": "https://github.com/arcaelas/.github/issues"
+  },
   "keywords": [
     "arcaelas",
     "module creation",

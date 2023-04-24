@@ -8,12 +8,28 @@
   },
   "description": "This library is used to create modules from scratch with linter and configs files for default.",
   "scripts": {
-    "test": "jest",
     "start": "tsc --watch",
+    "build": "tsc",
+    "test": "jest",
     "commit": "npm publish --access=public",
-    "prepublishOnly": "tsc && npm run build:create && npm version minor",
-    "build:create": "shx rm -rf lib/scripts/create/templates && shx cp -r src/scripts/create/templates lib/scripts/create/templates",
-    "postpublish": "shx rm -rf lib"
+    "prepublishOnly": "npm run test && npm run build && npm version minor",
+    "postpublish": "rm -rf lib"
+  },
+  "author": {
+    "name": "Arcaelas Insiders",
+    "email": "comunity@arcaelas.com",
+    "url": "https://github.com/arcaelas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arcaelas/cli.git"
+  },
+  "bugs": {
+    "email": "community@arcaelas.com",
+    "url": "https://github.com/arcaelas/.github/issues"
+  },
+  "engines": {
+    "node": ">=16"
   },
   "keywords": [
     "arcaelas",
@@ -29,22 +45,6 @@
     "save time",
     "effort"
   ],
-  "author": {
-    "name": "Arcaelas Insiders",
-    "email": "comunity@arcaelas.com",
-    "url": "https://github.com/arcaelas"
-  },
-  "bugs": {
-    "email": "community@arcaelas.com",
-    "url": "https://github.com/arcaelas/.github/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/arcaelas/cli"
-  },
-  "engines": {
-    "node": ">=16"
-  },
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
     "@types/jest": "^29.5.1",
