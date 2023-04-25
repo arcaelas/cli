@@ -43,6 +43,7 @@ export default new Command({
             switch (filename) {
                 case 'package.json':
                     content = JSON.parse(content)
+                    content.name = answers.name
                     if (answers.type === "module")
                         content.type ??= "module"
                     content = JSON.stringify(content)
