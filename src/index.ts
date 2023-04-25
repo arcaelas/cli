@@ -3,6 +3,36 @@ import "colors"
 import fs from "node:fs"
 import path from "node:path"
 import Command from "@arcaelas/command"
+import { Noop } from "@arcaelas/utils";
+
+type CopyHandler = Noop<[content: string, options: { source: string, target: string, filename: string }], string>
+export async function copy(source: string, target: string, handler?: CopyHandler) {
+    const SKIP_FILES = ['node_modules'];
+    const stats = fs.statSync(source)
+    if (stats.isDirectory()) {
+        fs.mkdirSync(target, { recursive: true })
+        for (const file of fs.readdirSync(source)) {
+            if (SKIP_FILES.includes(file))
+                continue
+            await copy(
+                path.join(source, file),
+                path.join(target, file),
+                handler,
+            )
+        }
+    }
+    else if (stats.isFile()) {
+        handler = typeof handler !== 'function' ? a => a : handler
+        const content = await handler(fs.readFileSync(source, 'utf-8'), {
+            filename: path.basename(source),
+            source,
+            target,
+        })
+        fs.writeFileSync(target, content, 'utf8');
+    }
+}
+
+
 
 const scripts = fs.readdirSync(
     path.join(__dirname, 'scripts')

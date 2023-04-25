@@ -3,46 +3,17 @@ import shell from "shelljs";
 import path from "node:path";
 import Command from "@arcaelas/command";
 import inquirer from "inquirer";
-
-
-function copy(source: string, target: string) {
-    const SKIP_FILES = ['node_modules'];
-    const stats = fs.statSync(source)
-    if (stats.isFile()) {
-        let content = fs.readFileSync(source, 'utf-8') as any
-        if (path.basename(source) === 'package.json') {
-            const name = path.basename(
-                path.dirname(target)
-            )
-            content = JSON.parse(content)
-            content = JSON.stringify({ ...content, name }, null, 2)
-        }
-        fs.writeFileSync(target, content, 'utf8');
-    } else if (stats.isDirectory()) {
-        fs.mkdirSync(target, { recursive: true })
-        for (const file of fs.readdirSync(source)) {
-            if (SKIP_FILES.includes(file))
-                continue
-            copy(
-                path.join(source, file),
-                path.join(target, file),
-            )
-        }
-    }
-}
+import { copy } from "../..";
 
 export default new Command({
     arguments: {},
     async action() {
-        const templates = fs.readdirSync(
-            path.join(__dirname, 'templates')
-        )
         const answers = await inquirer.prompt([
             {
                 name: "type",
                 type: "list",
                 message: `What do you want to create?`,
-                choices: templates,
+                choices: ['module', 'project'],
                 validate: input => input.trim() ? true : "Name could not be empty",
             },
             {
@@ -65,10 +36,26 @@ export default new Command({
             },
         ])
         const target = path.join(process.cwd(), answers.name)
-        const source = path.join(__dirname, 'templates', answers.type)
+        const source = path.join(__dirname, 'template')
         if (fs.existsSync(target))
             fs.rmSync(target, { recursive: true })
-        copy(source, target)
+        await copy(source, target, (content: any, { filename }) => {
+            switch (filename) {
+                case 'package.json':
+                    content = JSON.parse(content)
+                    if (answers.type === "module")
+                        content.type ??= "module"
+                    content = JSON.stringify(content)
+                    break
+                case 'tsconfig.json':
+                    content = JSON.parse(content)
+                    if (answers.type === "module")
+                        content["ts-node"] = { "esm": true }
+                    content = JSON.stringify(content)
+                    break
+            }
+            return content
+        })
         shell.cd(target)
         switch (answers.packager) {
             case "npm":

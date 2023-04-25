@@ -10,10 +10,10 @@
     "@jridgewell/gen-mapping" "^0.3.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@arcaelas/command@^2.38.0":
-  version "2.39.0"
-  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-2.39.0.tgz#a2c13a6ab8025d6cfd8fd7a2719f430ffbb2ec6e"
-  integrity sha512-BTAnHFKLjQ+/8tUBvpdLbgyCcP2Uf248WbA9Nv5pDLjUpnf9+h6pul2cMfB6zkiVqGboP+nyYQH4Zpd5Q2qwpQ==
+"@arcaelas/command@^2.40.0":
+  version "2.40.0"
+  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-2.40.0.tgz#7a8b4b758e609ecb30c0a83b190fdd8aae569c3f"
+  integrity sha512-7N6Ba9di0moTSZZO8khmvsVa1f6eP03c42sD4hKWtXSIZTeILkKhaYJD3n7WkP1PBVjUr6k022fEs8tY5kdCMQ==
   dependencies:
     "@arcaelas/utils" "^1.24.0"
     colors "^1.4.0"
