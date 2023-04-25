@@ -46,7 +46,7 @@ export default new Command({
                     content.name = answers.name
                     if (answers.type === "module")
                         content.type ??= "module"
-                    content = JSON.stringify(content)
+                    content = JSON.stringify(content, null, 2)
                     break
                 case 'tsconfig.json':
                     return null
