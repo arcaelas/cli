@@ -1,4 +1,7 @@
 {
+  "exclude": [
+    "src/scripts/init/template"
+  ],
   "include": [
     "src"
   ],
