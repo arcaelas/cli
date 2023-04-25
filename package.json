@@ -8,11 +8,12 @@
   },
   "description": "This library is used to create modules from scratch with linter and configs files for default.",
   "scripts": {
-    "start": "tsc --watch",
-    "build": "tsc",
     "test": "jest",
+    "start": "tsc --watch",
+    "build": "tsc && npm run build:init",
     "commit": "npm publish --access=public",
     "prepublishOnly": "npm run test && npm run build && npm version minor",
+    "build:init": "shx cp -r src/scripts/init/template lib/scripts/init/template",
     "postpublish": "rm -rf lib"
   },
   "author": {
