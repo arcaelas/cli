@@ -28,7 +28,8 @@ export async function copy(source: string, target: string, handler?: CopyHandler
             source,
             target,
         })
-        fs.writeFileSync(target, content, 'utf8');
+        if (content !== null)
+            fs.writeFileSync(target, content, 'utf8');
     }
 }
 

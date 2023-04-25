@@ -49,15 +49,12 @@ export default new Command({
                     content = JSON.stringify(content)
                     break
                 case 'tsconfig.json':
-                    content = JSON.parse(content)
-                    if (answers.type === "module")
-                        content["ts-node"] = { "esm": true }
-                    content = JSON.stringify(content)
-                    break
+                    return null
             }
             return content
         })
         shell.cd(target)
+        shell.exec('npx tsc --init --target ESNext --module Node16 --moduleResolution node')
         switch (answers.packager) {
             case "npm":
                 shell.exec("npm ci")
