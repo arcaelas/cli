@@ -39,7 +39,7 @@ export default new Command({
         const source = path.join(__dirname, 'template')
         if (fs.existsSync(target))
             fs.rmSync(target, { recursive: true })
-        await copy(source, target, (content: any, { filename }) => {
+        await copy(source, target, (content: any, { filename }: any) => {
             switch (filename) {
                 case 'package.json':
                     content = JSON.parse(content)

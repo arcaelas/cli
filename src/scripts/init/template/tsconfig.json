@@ -2,7 +2,24 @@
   "include": [
     "src"
   ],
+  "ts-node": {
+    "transpileOnly": true,
+    "require": [
+      "typescript-transform-paths/register"
+    ],
+  },
   "compilerOptions": {
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths",
+        "useRootDirs": true
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "useRootDirs": true,
+        "afterDeclarations": true
+      }
+    ],
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
