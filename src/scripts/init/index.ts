@@ -6,35 +6,30 @@ import inquirer from "inquirer";
 import { copy } from "../..";
 
 export default new Command({
-    arguments: {},
-    async action() {
-        const answers = await inquirer.prompt([
-            {
-                name: "type",
-                type: "list",
-                message: `What do you want to create?`,
-                choices: ['module', 'project'],
-                validate: input => input.trim() ? true : "Name could not be empty",
-            },
-            {
-                name: "name",
-                type: "input",
-                default: path.basename(process.cwd()),
-                message: a => `What do you want to name yor ${a.type}?`,
-                validate: input => input.trim() ? true : "Name could not be empty",
-            },
-            {
-                name: "install",
-                type: "confirm",
-                message: "Install dependencies after create?",
-            },
-            {
-                name: "packager",
-                type: "list",
-                when: a => a.install,
-                choices: ['npm', 'yarn', 'pnpm'],
-            },
-        ])
+    prompts: {
+        type: {
+            type: "list",
+            message: `What do you want to create?`,
+            choices: ['module', 'project'],
+            validate: input => input.trim() ? true : "Name could not be empty",
+        },
+        name: {
+            type: "input",
+            default: path.basename(process.cwd()),
+            message: a => `What do you want to name yor ${a.type}?`,
+            validate: input => input.trim() ? true : "Name could not be empty",
+        },
+        install: {
+            type: "confirm",
+            message: "Install dependencies after create?",
+        },
+        packager: {
+            type: "list",
+            when(answers: any) { return answers.install },
+            choices: ['npm', 'yarn', 'pnpm'],
+        },
+    },
+    async action(answers) {
         const target = path.join(process.cwd(), answers.name)
         const source = path.join(__dirname, 'template')
         if (fs.existsSync(target))
