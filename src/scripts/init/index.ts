@@ -2,7 +2,6 @@ import fs from "node:fs";
 import shell from "shelljs";
 import path from "node:path";
 import Command from "@arcaelas/command";
-import inquirer from "inquirer";
 import { copy } from "../..";
 
 export default new Command({
