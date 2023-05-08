@@ -1,10 +1,20 @@
 {
   "license": "ISC",
   "version": "1.0.0",
-  "main": "lib/index.js",
   "name": "my-package",
   "homepage": "https://github.com/arcaelas/cli#readme",
   "description": "The library is easy to use, and it can help developers to save time and effort when creating new modules.",
+  "main": "./lib/index.js",
+  "exports": {
+    "default": "./lib/index.js",
+    "require": "./lib/index.cjs",
+    "import": "./lib/index.js"
+  },
+  "files": [
+    "lib/",
+    "*.md",
+    "*.json"
+  ],
   "author": {
     "name": "Arcaelas Insiders",
     "email": "comunity@arcaelas.com",
@@ -22,11 +32,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "test": "jest",
-    "start": "tsc --watch",
-    "commit": "npm run test && npm publish --access=public",
-    "prepare": "ts-patch install -s",
-    "prepublishOnly": "tsc && npm version minor",
+    "build": "tsc && ts-node esbuild.js",
+    "commit": "npm publish --access=public",
+    "prepublishOnly": "npm run build && npm version minor",
     "postpublish": "rm -rf lib"
   },
   "keywords": [
@@ -43,12 +51,9 @@
     "@arcaelas/utils": "^1.24.0"
   },
   "devDependencies": {
-    "jest": "^29.5.0",
-    "ts-jest": "^29.1.0",
-    "ts-patch": "^2.1.0",
-    "typescript": "^5.0.4",
-    "@types/jest": "^29.5.1",
     "@types/node": "^16.11.11",
-    "typescript-transform-paths": "^3.4.6"
+    "esbuild": "^0.17.18",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }
