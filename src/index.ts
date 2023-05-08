@@ -43,11 +43,11 @@ const [script, ...args] = process.argv.slice(
 )
 
 new Command({
-    arguments: {
-        name: String,
-        arguments: Array,
+    prompts: {
+        name: { type: "input" },
+        arguments: { type: "rawlist" }
     },
-    async action(options, argv) {
+    action(options) {
         if (!scripts.includes(options.name)) {
             console.log("Arcaelas CLI".underline.green)
             console.log("\"%s\" is not a valid command", options.name.red.bold)
