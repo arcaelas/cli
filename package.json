@@ -2,17 +2,14 @@
   "license": "ISC",
   "version": "2.41.0",
   "name": "@arcaelas/cli",
-  "main": "lib/index.js",
   "bin": {
     "arcaelas": "lib/index.js"
   },
   "description": "This library is used to create modules from scratch with linter and configs files for default.",
   "scripts": {
-    "test": "jest",
-    "start": "tsc --watch",
-    "build": "tsc && npm run build:init",
+    "build": "tsc && ts-node esbuild.js && npm run build:init",
     "commit": "npm publish --access=public",
-    "prepublishOnly": "npm run test && npm run build && npm version minor",
+    "prepublishOnly": "npm run build && npm version minor",
     "build:init": "shx cp -r src/scripts/init/template lib/scripts/init/",
     "postpublish": "rm -rf lib"
   },
@@ -51,11 +48,8 @@
   ],
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
-    "@types/jest": "^29.5.1",
     "@types/node": "^18.16.0",
-    "jest": "^29.5.0",
     "shx": "^0.3.4",
-    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
