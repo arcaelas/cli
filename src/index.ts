@@ -1,7 +1,7 @@
 #!node
 import "colors"
-import fs from "node:fs"
-import path from "node:path"
+import fs, { existsSync } from "node:fs"
+import path, { join, resolve } from "node:path"
 import Command from "@arcaelas/command"
 import { Noop } from "@arcaelas/utils";
 
@@ -33,11 +33,13 @@ export async function copy(source: string, target: string, handler?: CopyHandler
     }
 }
 
+const paths = {
+    cwd: process.cwd(),
+    scripts: join(__dirname, 'scripts'),
+    sources: join(__dirname, 'scripts'),
+}
 
-
-const scripts = fs.readdirSync(
-    path.join(__dirname, 'scripts')
-)
+const scripts = existsSync(paths.scripts) ? fs.readdirSync(paths.scripts) : []
 const [script, ...args] = process.argv.slice(
     process.argv.indexOf(__filename) + 1
 )
@@ -47,19 +49,22 @@ new Command({
         name: { type: "input" },
         arguments: { type: "rawlist" }
     },
-    action(options) {
+    async action(options) {
         if (!scripts.includes(options.name)) {
             console.log("Arcaelas CLI".underline.green)
             console.log("\"%s\" is not a valid command", options.name.red.bold)
             console.log("arcaela [command] [arguments?] --help?")
             console.log("commands:")
             console.log("        %s", scripts.join(" "))
-            process.exit()
+            process.exit(404)
         }
-        const _module = require(
-            path.resolve(__dirname, 'scripts', options.name)
-        )
-        return (_module.default ?? _module).exec(...options.arguments)
+        try {
+            const module = require(resolve(paths.scripts, options.name))
+            return await module.default.exec(...options.arguments)
+        } catch (error) {
+            console.error(error)
+            process.exit(1)
+        }
     },
 }).exec({
     name: script,

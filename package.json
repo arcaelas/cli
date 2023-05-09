@@ -2,36 +2,8 @@
   "license": "ISC",
   "version": "2.41.0",
   "name": "@arcaelas/cli",
-  "bin": {
-    "arcaelas": "lib/index.js"
-  },
+  "homepage": "https://github.com/arcaelas/cli#readme",
   "description": "This library is used to create modules from scratch with linter and configs files for default.",
-  "scripts": {
-    "build": "tsc && ts-node esbuild.js && npm run build:init",
-    "commit": "npm publish --access=public",
-    "prepublishOnly": "npm run build && npm version minor",
-    "build:init": "shx cp -r src/scripts/init/template lib/scripts/init/",
-    "postpublish": "rm -rf lib"
-  },
-  "author": {
-    "name": "Arcaelas Insiders",
-    "email": "comunity@arcaelas.com",
-    "url": "https://github.com/arcaelas"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/arcaelas/cli.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "bugs": {
-    "email": "community@arcaelas.com",
-    "url": "https://github.com/arcaelas/.github/issues"
-  },
-  "engines": {
-    "node": ">=16"
-  },
   "keywords": [
     "arcaelas",
     "module creation",
@@ -46,15 +18,46 @@
     "save time",
     "effort"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arcaelas/cli.git"
+  },
+  "bugs": {
+    "email": "community@arcaelas.com",
+    "url": "https://github.com/arcaelas/.github/issues"
+  },
+  "bin": {
+    "arcaelas": "lib/index.js"
+  },
+  "author": {
+    "name": "Arcaelas Insiders",
+    "email": "comunity@arcaelas.com",
+    "url": "https://github.com/arcaelas"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "build": "tsc && ts-node esbuild.js && npm run build:init",
+    "commit": "npm publish --access=public",
+    "prepublishOnly": "npm run build && npm version minor",
+    "build:init": "shx cp -r src/scripts/init/template lib/scripts/init/",
+    "postpublish": "rm -rf lib"
+  },
+  "engines": {
+    "node": ">=16"
+  },
   "devDependencies": {
     "@types/node": "^18.16.0",
+    "esbuild": "^0.17.18",
+    "esbuild-plugin-copy": "^2.1.1",
     "shx": "^0.3.4",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@arcaelas/command": "^3.3.0",
-    "@arcaelas/utils": "^1.26.0",
+    "@arcaelas/command": "^3.5.6",
+    "@arcaelas/utils": "^1.45.10",
     "colors": "^1.4.0",
     "shelljs": "^0.8.5"
   }
