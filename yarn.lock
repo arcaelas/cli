@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@arcaelas/command@^3.5.9":
-  version "3.5.9"
-  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-3.5.9.tgz#986952c75c6048cec1a77813849cf1a0bc28d3e7"
-  integrity sha512-bci+fo41DECDUkGZGajfmJuQOZjIOjdG1dtIHb9qD2peTkV4fOl4VdjNeW/Ito4n1QCa7vdcDKfANg0/x9AK2A==
+"@arcaelas/command@^3.5.10":
+  version "3.5.10"
+  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-3.5.10.tgz#b121e0356d97c42a2cc5b27d78565168a714c6d9"
+  integrity sha512-Ri8wyZIXHvxJhJfJXeYRYqPosOE5qjzbb1e+ZIXyrH6jKSkfrE1goJUvN8ka+jC7MIUQs7ICQM2Mm0ESXoGt1A==
   dependencies:
-    "@arcaelas/utils" "^1.45.17"
+    "@arcaelas/utils" "^1.45.18"
     "@types/inquirer" "^8.0.0"
     colors "^1.4.0"
     inquirer "^8.0.0"
 
-"@arcaelas/utils@^1.45.17", "@arcaelas/utils@^1.45.18":
+"@arcaelas/utils@^1.45.18":
   version "1.45.18"
   resolved "https://registry.yarnpkg.com/@arcaelas/utils/-/utils-1.45.18.tgz#f2c26dfef7f2f4d9d83a9f35607de62228b414de"
   integrity sha512-jGlLwoEsK5+r3cIgmj+1U0UAoSG8aHbqjm187sWVrmPFBGVKNMjhKsupHLgV+WJC8UToiw3PiWiWgiS1mEkzeQ==
