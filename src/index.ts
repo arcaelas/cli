@@ -1,17 +1,17 @@
 #!node
 import "colors"
-import fs, { existsSync } from "node:fs"
 import path, { join, resolve } from "node:path"
+import { existsSync, statSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
 import Command from "@arcaelas/command"
 import { Noop } from "@arcaelas/utils";
 
 type CopyHandler = Noop<[content: string, options: { source: string, target: string, filename: string }], string>
 export async function copy(source: string, target: string, handler?: CopyHandler) {
     const SKIP_FILES = ['node_modules'];
-    const stats = fs.statSync(source)
+    const stats = statSync(source)
     if (stats.isDirectory()) {
-        fs.mkdirSync(target, { recursive: true })
-        for (const file of fs.readdirSync(source)) {
+        mkdirSync(target, { recursive: true })
+        for (const file of readdirSync(source)) {
             if (SKIP_FILES.includes(file))
                 continue
             await copy(
@@ -23,23 +23,22 @@ export async function copy(source: string, target: string, handler?: CopyHandler
     }
     else if (stats.isFile()) {
         handler = typeof handler !== 'function' ? a => a : handler
-        const content = await handler(fs.readFileSync(source, 'utf-8'), {
+        const content = await handler(readFileSync(source, 'utf-8'), {
             filename: path.basename(source),
             source,
             target,
         })
         if (content !== null)
-            fs.writeFileSync(target, content, 'utf8');
+            writeFileSync(target, content, 'utf8');
     }
 }
 
 const paths = {
     cwd: process.cwd(),
     scripts: join(__dirname, 'scripts'),
-    sources: join(__dirname, 'scripts'),
 }
 
-const scripts = existsSync(paths.scripts) ? fs.readdirSync(paths.scripts) : []
+const scripts = existsSync(paths.scripts) ? readdirSync(paths.scripts) : []
 const [script, ...args] = process.argv.slice(
     process.argv.indexOf(__filename) + 1
 )
@@ -59,8 +58,8 @@ new Command({
             process.exit(404)
         }
         try {
-            const module = require(resolve(paths.scripts, options.name))
-            return await module.default.exec(...options.arguments)
+            const _module = require(resolve(paths.scripts, options.name))
+            return await _module.default.exec(...options.arguments)
         } catch (error) {
             console.error(error)
             process.exit(1)
