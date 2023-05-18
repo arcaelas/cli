@@ -41,7 +41,7 @@
   "scripts": {
     "build": "tsc && node esbuild.js",
     "test": "echo \"All its done!\"",
-    "commit": "npm publish --access=public",
+    "commit": "npm version patch && git push",
     "prepublishOnly": "yarn test",
     "postpublish": "rm -rf build"
   },
