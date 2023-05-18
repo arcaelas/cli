@@ -1,9 +1,9 @@
 #!node
 import "colors"
+import Command from "@arcaelas/command"
+import type { Noop } from "@arcaelas/utils";
 import path, { join, resolve } from "node:path"
 import { existsSync, statSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
-import Command from "@arcaelas/command"
-import { Noop } from "@arcaelas/utils";
 
 type CopyHandler = Noop<[content: string, options: { source: string, target: string, filename: string }], string>
 export async function copy(source: string, target: string, handler?: CopyHandler) {
