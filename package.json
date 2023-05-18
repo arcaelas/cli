@@ -50,6 +50,11 @@
     "prepublishOnly": "yarn test",
     "postpublish": "rm -rf build"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "test/*.ts"
+    ]
+  },
   "engines": {
     "node": ">=16"
   },
