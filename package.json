@@ -29,11 +29,6 @@
   "bin": {
     "arcaelas": "build/index.js"
   },
-  "files": [
-    "build/",
-    "*.md",
-    "*.json"
-  ],
   "author": {
     "name": "Arcaelas Insiders",
     "email": "comunity@arcaelas.com",
