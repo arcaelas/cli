@@ -1,6 +1,6 @@
 {
   "license": "ISC",
-  "version": "2.44.1",
+  "version": "2.44.2",
   "name": "@arcaelas/cli",
   "homepage": "https://github.com/arcaelas/cli#readme",
   "description": "This library is used to create modules from scratch with linter and configs files for default.",
