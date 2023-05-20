@@ -2,20 +2,20 @@
 # yarn lockfile v1
 
 
-"@arcaelas/command@^3.5.10":
-  version "3.5.10"
-  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-3.5.10.tgz#b121e0356d97c42a2cc5b27d78565168a714c6d9"
-  integrity sha512-Ri8wyZIXHvxJhJfJXeYRYqPosOE5qjzbb1e+ZIXyrH6jKSkfrE1goJUvN8ka+jC7MIUQs7ICQM2Mm0ESXoGt1A==
+"@arcaelas/command@^3.5.11":
+  version "3.5.11"
+  resolved "https://registry.yarnpkg.com/@arcaelas/command/-/command-3.5.11.tgz#942491c8009c3fa8c05771a6b22649b839be7b97"
+  integrity sha512-k3l2HkCr/X16vGhs5hKpjGwaHmdjjyLfjdE0mWm9+dpZhQsn54dcQVWDWE3cBcioVn0g/TXJgTAyRFf2xJLgSw==
   dependencies:
-    "@arcaelas/utils" "^1.45.18"
+    "@arcaelas/utils" "^1.46.2"
     "@types/inquirer" "^8.0.0"
     colors "^1.4.0"
     inquirer "^8.0.0"
 
-"@arcaelas/utils@^1.45.18":
-  version "1.45.18"
-  resolved "https://registry.yarnpkg.com/@arcaelas/utils/-/utils-1.45.18.tgz#f2c26dfef7f2f4d9d83a9f35607de62228b414de"
-  integrity sha512-jGlLwoEsK5+r3cIgmj+1U0UAoSG8aHbqjm187sWVrmPFBGVKNMjhKsupHLgV+WJC8UToiw3PiWiWgiS1mEkzeQ==
+"@arcaelas/utils@^1.46.2":
+  version "1.46.2"
+  resolved "https://registry.yarnpkg.com/@arcaelas/utils/-/utils-1.46.2.tgz#a36cf71fe185edb4f75686e9e58173ec7c64394c"
+  integrity sha512-0Sa7izcjvLd2qHxRe7nDfbrb6/gdIJqA5tDSQFmEEiHA7axP8N34K3EYZhqS2DZKU5SPHULU+UU9B362MfJodA==
 
 "@esbuild/android-arm64@0.17.19":
   version "0.17.19"
@@ -157,9 +157,9 @@
     rxjs "^7.2.0"
 
 "@types/node@*":
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.0.tgz#e33da33171ac4eba79b9cfe30b68a4f1561e74ec"
-  integrity sha512-3iD2jaCCziTx04uudpJKwe39QxXgSUnpxXSvRQjRvHPxFQfmfP4NXIm/NURVeNlTCc+ru4WqjYGTmpXrW9uMlw==
+  version "20.2.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.1.tgz#de559d4b33be9a808fd43372ccee822c70f39704"
+  integrity sha512-DqJociPbZP1lbZ5SQPk4oag6W7AyaGMO6gSfRwq3PWl4PXTwJpRQJhDq4W0kzrg3w6tJ1SwlvGZ5uKFHY13LIg==
 
 "@types/through@*":
   version "0.0.30"
@@ -873,9 +873,9 @@ to-regex-range@^5.0.1:
     is-number "^7.0.0"
 
 tslib@^2.1.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.1.tgz#f2ad78c367857d54e49a0ef9def68737e1a67b21"
-  integrity sha512-KaI6gPil5m9vF7DKaoXxx1ia9fxS4qG5YveErRRVknPDXXriu5M8h48YRjB6h5ZUOKuAKlSJYb0GaDe8I39fRw==
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.2.tgz#1b6f07185c881557b0ffa84b111a0106989e8338"
+  integrity sha512-5svOrSA2w3iGFDs1HibEVBGbDrAY82bFQ3HZ3ixB+88nsbsWQoKqDRb5UBYAUPEzbBn6dAp5gRNXglySbx1MlA==
 
 type-fest@^0.21.3:
   version "0.21.3"
