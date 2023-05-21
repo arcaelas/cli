@@ -59,7 +59,7 @@
     "shx": "^0.3.4"
   },
   "dependencies": {
-    "@arcaelas/command": "^3.5.11",
+    "@arcaelas/command": "^3.6.0",
     "@arcaelas/utils": "^1.47.2",
     "colors": "^1.4.0",
     "shelljs": "^0.8.5",
